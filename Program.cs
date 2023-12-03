@@ -1,4 +1,7 @@
-﻿class Program
+﻿using advent_of_code_2023.day1;
+using advent_of_code_2023.day2;
+
+class Program
 {
     static void Main(string[] args)
     {
@@ -27,6 +30,7 @@
                 new Day1().Run();
                 break;
             case 2:
+                new Day2().Run();
                 break;
             default:
                 Console.WriteLine("Invalid day");
