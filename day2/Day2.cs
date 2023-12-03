@@ -16,8 +16,10 @@
             List<BagPull> pullList;
 
             int redInPull, greenInPull, blueInPull;
+            int minRed, minGreen, minBlue;
 
             int total = 0;
+            int totalPower = 0;
 
             bool pullGoodSoFar = true;
 
@@ -29,6 +31,9 @@
                 Console.WriteLine($"Line: {line}");
 
                 pullGoodSoFar = true;
+                minRed = 0;
+                minBlue = 0;
+                minGreen = 0;
 
                 // parse game id
                 int gameId = int.Parse(line
@@ -108,6 +113,11 @@
                     {
                         Console.WriteLine(">> Pull is good!");
                     }
+
+                    // Part 2 - minimum sets
+                    if (minRed < redInPull) minRed = redInPull;
+                    if (minBlue < blueInPull) minBlue = blueInPull;
+                    if (minGreen < greenInPull) minGreen = greenInPull;
                 }
 
                 if (pullGoodSoFar)
@@ -120,10 +130,15 @@
                     Console.WriteLine($"Game ID {gameId} is not possible");
                 }
 
+                // Part 2 - determine cube
+                var power = minRed * minBlue * minGreen;
+                totalPower += power;
+
                 Console.WriteLine("-------------------------------------------------");
             }
 
             Console.WriteLine($"Total: {total}");
+            Console.WriteLine($"Total power: {totalPower}");
         }
 
         class BagPull
